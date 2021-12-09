@@ -33,6 +33,39 @@ const add = () =>{
 }
 
 
+const createEmployee = () => {
+  inquirer.prompt([
+    {
+      type:'input',
+      name: 'name',
+      message: 'What is your employee Name?',
+    },
+
+    {
+      type: 'input',
+      name: 'id',
+      message: 'What is employee ID?',
+    },
+
+    {
+      type: 'input',
+      name: 'email',
+      message: 'What is your employee email adress?',
+    },
+
+    {
+      type: 'list',
+      name: 'role',
+      message: 'What is your employee Role?',
+      choices: ['Intern' , 'Engineer' , 'Manager']
+    },
+    
+  ])
+}
+
+
+
+
 
 
 
