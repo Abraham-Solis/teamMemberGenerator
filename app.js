@@ -14,29 +14,31 @@ const render = require("./lib/htmlRenderer");
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
-const add = () =>{
+let teamMembers = []
+
+const add = () => {
   inquirer.prompt([
-  {
-    type:'confirm',
-    name: 'add',
-    message: 'Do you want to add another employee?',
-  }
-  ])
-  
-  .then(data =>{
-    if (data.add == true){
-      createEmployee()
-    } else{
-      console.log(`You have succesfully created your Team!`)
+    {
+      type: 'confirm',
+      name: 'add',
+      message: 'Do you want to add another employee?',
     }
-  })
+  ])
+
+    .then(data => {
+      if (data.add == true) {
+        createEmployee()
+      } else {
+        console.log(`You have succesfully created your Team!`)
+      }
+    })
 }
 
 
 const createEmployee = () => {
   inquirer.prompt([
     {
-      type:'input',
+      type: 'input',
       name: 'name',
       message: 'What is your employee Name?',
     },
@@ -57,11 +59,30 @@ const createEmployee = () => {
       type: 'list',
       name: 'role',
       message: 'What is your employee Role?',
-      choices: ['Intern' , 'Engineer' , 'Manager']
-    },
-    
+      choices: ['Intern', 'Engineer', 'Manager']
+    }
+
   ])
-}
+
+
+    .then(answers =>{
+      if (answers.role === 'Manager'){
+        inquirer.prompt([
+          {
+            type:'input',
+            name:'officeNumber',
+            message: 'What is the manager Office Number?',
+
+          }
+        ])
+        .then(manager1 =>{
+          const personManager = new Manager(answers.name, answers.id, answers.email, manager.officeNumber)
+          teamMembers.push(personManager)
+          console.log(teamMembers)
+          add()
+      }) 
+      } 
+
 
 
 
