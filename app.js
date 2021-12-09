@@ -106,7 +106,7 @@ const createEmployee = () => {
           }
         ])
           .then(intern1 => {
-            const personIntnern = new Inter(answers.name, answers.id, answers.email, inter1.school)
+            const personIntnern = new Intern(answers.name, answers.id, answers.email, intern1.school)
             teamMembers.push(personIntnern)
             console.log(teamMembers)
             console.log(`You have succesfully added an Engineer to your team!`)
