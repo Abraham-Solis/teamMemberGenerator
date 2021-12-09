@@ -109,7 +109,7 @@ const createEmployee = () => {
             const personIntnern = new Intern(answers.name, answers.id, answers.email, intern1.school)
             teamMembers.push(personIntnern)
             console.log(teamMembers)
-            console.log(`You have succesfully added an Engineer to your team!`)
+            console.log(`You have succesfully added an Intern to your team!`)
             add()
 
 
