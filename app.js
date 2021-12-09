@@ -65,33 +65,67 @@ const createEmployee = () => {
   ])
 
 
-    .then(answers =>{
-      if (answers.role === 'Manager'){
+    .then(answers => {
+      if (answers.role === 'Manager') {
         inquirer.prompt([
           {
-            type:'input',
-            name:'officeNumber',
+            type: 'input',
+            name: 'officeNumber',
             message: 'What is the manager Office Number?',
 
           }
         ])
-        .then(manager1 =>{
-          const personManager = new Manager(answers.name, answers.id, answers.email, manager.officeNumber)
-          teamMembers.push(personManager)
-          console.log(teamMembers)
-          add()
-      }) 
-      } 
+          .then(manager1 => {
+            const personManager = new Manager(answers.name, answers.id, answers.email, manager1.officeNumber)
+            teamMembers.push(personManager)
+            console.log(teamMembers)
+            console.log(`You have succesfully added a Manager to your team!`)
+            add()
+          })
+      } else if (answers.role === 'Engineer') {
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: 'github',
+            message: 'What is your github Page'
+          }
+        ])
+          .then(engineer1 => {
+            const personEnginner = new Engineer(answers.name, answers.id, answers.email, engineer1.github)
+            teamMem.push(personEnginner)
+            console.log(teamMembers)
+            console.log(`You have succesfully added an Engineer to your team!`)
+            add()
+          })
+      } else if (answers.role === 'Intern') {
+        inquirer.prompt([
+          {
+            type: 'input',
+            name: 'school',
+            message: 'Where did the Intern go to school?'
+          }
+        ])
+          .then(intern1 => {
+            const personIntnern = new Inter(answers.name, answers.id, answers.email, inter1.school)
+            teamMembers.push(personIntnern)
+            console.log(teamMembers)
+            console.log(`You have succesfully added an Engineer to your team!`)
+            add()
+
+
+          })
+      }
+    })
+
+
+
+    .catch(err => console.log(err))
+}
 
 
 
 
-
-
-
-
-
-
+createEmployee()
 
 
 
