@@ -30,7 +30,10 @@ const add = () => {
         createEmployee()
       } else {
         console.log(`You have succesfully created your Team!`)
-        writeToFile("teamMembers.html", render(teamMembers)) 
+        fs.mkdir('output', { recursive: true }, (err) => {
+          if (err) throw err;
+        });
+        writeToFile("./output/teamMembers.html", render(teamMembers)) 
       }
     })
 }
@@ -126,6 +129,7 @@ const createEmployee = () => {
 
 // Function to MAKE File 
 function writeToFile(fileName, data) {
+
   return fs.writeFile(fileName, data, err => {
     if (err) {
       return console.log(err)
