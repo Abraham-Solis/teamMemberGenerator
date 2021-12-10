@@ -30,6 +30,7 @@ const add = () => {
         createEmployee()
       } else {
         console.log(`You have succesfully created your Team!`)
+        writeToFile("teamMembers.html", render(teamMembers)) 
       }
     })
 }
@@ -92,7 +93,7 @@ const createEmployee = () => {
         ])
           .then(engineer1 => {
             const personEnginner = new Engineer(answers.name, answers.id, answers.email, engineer1.github)
-            teamMem.push(personEnginner)
+            teamMembers.push(personEnginner)
             console.log(teamMembers)
             console.log(`You have succesfully added an Engineer to your team!`)
             add()
@@ -120,6 +121,17 @@ const createEmployee = () => {
 
 
     .catch(err => console.log(err))
+}
+
+
+// Function to MAKE File 
+function writeToFile(fileName, data) {
+  return fs.writeFile(fileName, data, err => {
+    if (err) {
+      return console.log(err)
+    }
+
+  })
 }
 
 

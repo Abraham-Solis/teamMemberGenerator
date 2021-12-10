@@ -29,5 +29,5 @@ test("Can get email via getEmail()", () => {
 test("getRole() should return \"Employee\"", () => {
   const testValue = "Employee";
   const employee = new Employee("TestEmployee", 1, `testemployee@gmailcom`);
-  expect(employee.getRole()).toBe(`Employee`);
+  expect(employee.getRole()).toBe(testValue);
 });
